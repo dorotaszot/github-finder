@@ -29,4 +29,31 @@ class UI {
     </div>
     `
   }
+
+  showAlert(message, className) {
+    this.clearAlert();
+
+    const div = document.createElement('div');
+    div.className = className;
+    div.appendChild(document.createTextNode(message));
+
+    const searchContainer = document.querySelector('.search-container');
+    const searchUser = document.getElementById('search-user');
+    searchContainer.insertBefore(div, searchUser);
+
+    setTimeout(() => {
+      this.clearAlert()
+    }, 2000);
+  }
+
+  clearAlert() {
+    const currentAlert = document.querySelector('.alert');
+    if (currentAlert) {
+      currentAlert.remove();
+    }
+  }
+
+  clearProfile() {
+    this.profile.innerHTML = '';
+  }
 }
